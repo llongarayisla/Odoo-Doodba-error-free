@@ -1,0 +1,44 @@
+services:
+  odoo:
+    extends:
+      file: common.yaml
+      service: odoo
+    restart: unless-stopped
+    env_file:
+      - .docker/odoo.env
+      - .docker/db-access.env
+    environment:
+      DB_FILTER: "^prod"
+      DOODBA_ENVIRONMENT: "${DOODBA_ENVIRONMENT-prod}"
+      INITIAL_LANG: "pt_BR"
+      LIST_DB: "true"
+      PGHOST: doodba-14-0-prod-db
+    depends_on:
+      - db
+    networks:
+      default:
+    labels:
+      doodba.domain.main: ""
+
+  db:
+    extends:
+      file: common.yaml
+      service: db
+    environment:
+      DB_HOST: doodba-14-0-prod-db
+    env_file:
+      - .docker/db-creation.env
+    restart: unless-stopped
+    networks:
+      default:
+        aliases:
+          - "doodba-14-0-prod-db"
+
+networks:
+  default:
+    driver_opts:
+      encrypted: 1
+
+volumes:
+  filestore:
+  db:

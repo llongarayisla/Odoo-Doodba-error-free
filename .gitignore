@@ -1,0 +1,92 @@
+# ==========================================
+# 1. DOODBA & ODOO CORE (Estrutura Doodba)
+# ==========================================
+# Ignore all src directories except private and files with a dot
+/odoo/auto
+/odoo/custom/src/*/
+!/odoo/custom/src/private/
+
+# Ignore docker-compose.yml and overrides by default, to allow easy defaults per clone
+/docker-compose.yml
+/docker-compose.override.yml
+/docker-compose.local.yml
+
+# Project-specific docker configurations
+/.docker/
+
+# ==========================================
+# 2. COMPILED FORMATS, CACHE & TEMP FILES
+# ==========================================
+# Compiled formats, cache, temporary files, git garbage
+**.~
+**.mo
+**.py[co]
+**.egg-info
+**.orig
+__pycache__/
+*.pyc
+*.pyd
+
+# Ferramentas modernas de QA, Linting e Testes (Python)
+.pytest_cache/
+.coverage
+htmlcov/
+.ruff_cache/
+.mypy_cache/
+.pre-commit-config.yaml.rej
+
+# ==========================================
+# 3. IDEs, EDITORS & WORKSPACES
+# ==========================================
+# User-specific or editor-specific development files and settings
+.vscode/*
+!/.vscode/*.jinja
+!/.vscode/extensions.json
+!/.vscode/launch.json
+!/.vscode/settings.json
+!/.vscode/tasks.json
+/odoo/custom/src/private/.vscode/*
+/.venv
+/doodba.*.code-workspace
+/src
+.idea/*
+
+# ==========================================
+# 4. SECURITY, SECRETS & LOCAL CERTS
+# ==========================================
+# Arquivos de ambiente locais nunca devem subir
+.env
+.env.local
+.env.*
+
+# Chaves SSL e Certificados gerados localmente (ex: mkcert)
+*.pem
+*.key
+*.crt
+/nginx/ssl/
+
+# ==========================================
+# 5. OS SPECIFIC (Windows & macOS)
+# ==========================================
+# Evita sujeira caso outros desenvolvedores usem Mac ou Windows nativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# 6. ODOO LOGS, BACKUPS & LOCAL DATA
+# ==========================================
+# Evita subir volumes do banco, anexos e dumps caso caiam na raiz
+*.log
+*.zip
+*.dump
+*.sql
+/backups/
+/filestore/
+/db/
+/data/

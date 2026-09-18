@@ -1,0 +1,10 @@
+# Inventário: stock é nativo (OCB). stock_request vem da OCA.
+stock-logistics-warehouse:
+  - stock_request
+
+# RH: nomes oficiais no GitHub (OCA/hr 14.0)
+# hr_ppe -> hr_employee_ppe
+# hr_personal_request -> hr_personal_equipment_request
+hr:
+  - hr_personal_equipment_request
+  - hr_employee_ppe
